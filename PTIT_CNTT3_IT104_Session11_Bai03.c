@@ -6,46 +6,38 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-typedef struct Node
-{
+typedef struct Node{
     int data;
     struct Node *next;
     struct Node *prev;
 }Node;
-Node* createNode(int data)
-{
+Node* createNode(int data){
     Node* node = (Node *)malloc(sizeof(Node));
     node -> data = data;
     node -> next = NULL;
     node -> prev = NULL;
     return node;
 }
-void printList(Node* head)
-{
+void printList(Node* head){
     Node* current = head;
     printf("NULL <-> ");
-    while (current != NULL)
-    {
+    while (current != NULL){
         printf("%d <-> ", current -> data);
         current = current -> next;
     }
     printf("NULL\n");
 }
-bool searchList(Node* head, int searchTarget)
-{
+bool searchList(Node* head, int searchTarget){
     Node* current = head;
-    while (current != NULL)
-    {
-        if (current -> data == searchTarget)
-        {
+    while (current != NULL){
+        if (current -> data == searchTarget){
             return true;
         }
         current = current -> next;
     }
     return false;
 }
-int main()
-{
+int main(){
     Node* head = createNode(1);
     Node* second = createNode(2);
     Node* third = createNode(3);
@@ -67,8 +59,7 @@ int main()
     scanf("%d", &value);
     if (searchList(head, value)){
         printf("Phan tu %d co trong danh sach.\n", value);
-    }else
-    {
+    }else{
         printf("Phan tu %d khong co trong danh sach.\n", value);
     }
     return 0;
