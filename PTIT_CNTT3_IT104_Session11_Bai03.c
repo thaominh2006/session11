@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct Node
 {
@@ -30,18 +31,18 @@ void printList(Node* head)
     }
     printf("NULL\n");
 }
-int searchList(Node* head, int data)
+bool searchList(Node* head, int searchTarget)
 {
     Node* current = head;
     while (current != NULL)
     {
-        if (current -> data == data)
+        if (current -> data == searchTarget)
         {
-            return 1;
+            return true;
         }
         current = current -> next;
     }
-    return 0;
+    return false;
 }
 int main()
 {
@@ -64,12 +65,11 @@ int main()
     int value;
     printf("Nhap so nguyen duong ban muon tim: ");
     scanf("%d", &value);
-    if (searchList(head, value))
-    {
-        printf("True\n");
+    if (searchList(head, value)){
+        printf("Phan tu %d co trong danh sach.\n", value);
     }else
     {
-        printf("False\n");;
+        printf("Phan tu %d khong co trong danh sach.\n", value);
     }
     return 0;
 }
